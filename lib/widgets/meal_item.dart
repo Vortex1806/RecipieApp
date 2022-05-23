@@ -9,7 +9,6 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function removeItem;
 
   MealItem(
       {this.id,
@@ -18,7 +17,7 @@ class MealItem extends StatelessWidget {
       this.duration,
       this.complexity,
       this.affordability,
-      this.removeItem});
+      });
 
   String get complexityCheck {
     if (complexity == Complexity.Simple) {
@@ -51,7 +50,7 @@ class MealItem extends StatelessWidget {
         .pushNamed(RecipieScreen.routeName, arguments: id)
         .then((result) {
       if (result != null) {
-        removeItem(result);
+        // removeItem(result);
       }
     });
   }

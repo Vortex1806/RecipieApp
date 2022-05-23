@@ -4,6 +4,11 @@ import '../data/dummy_data.dart';
 class RecipieScreen extends StatelessWidget {
   static const routeName = '/recipie_screen';
 
+  final Function toggleFacorites;
+  final Function isFavorite;
+
+  RecipieScreen(this.toggleFacorites, this.isFavorite);
+
   Widget buildSectionTitle(BuildContext context, String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -81,10 +86,11 @@ class RecipieScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.auto_delete),
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
+        child: Icon(
+          isFavorite(mealId) ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+        ),
+        onPressed: () => toggleFacorites(mealId),
       ),
     );
   }
